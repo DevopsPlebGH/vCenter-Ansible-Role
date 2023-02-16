@@ -14,7 +14,7 @@ Role Name
 
 A brief description of the role goes here.
 
-Credit to Allen Johnson. 
+Credit to Allen Johnson.
 Blog post link here: https://www.hybriddatacenter.net/deploy-vmware-vcenter-7-with-ansible/
 
 Requirements
