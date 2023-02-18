@@ -1,0 +1,48 @@
+---
+# Utilizes the vmware_deploy_ovf module to configure and deploy the vCenter Server Appliance from an OVF file.
+- name: role - vCenterServer | 00-deploy-vcsa.yml
+  block: 
+    - name: Deploying the vCenter Server Appliance
+      vmware_deploy_ovf:
+        hostname: '{{ esxi_address }}'
+        username: '{{ esxi_username }}'
+        password: '{{ esxi_password }}'
+        name: '{{ vcenter_hostname }}'
+        datastore: '{{ esxi_datastore }}'
+        disk_provisioning: "thin"
+        networks: '{{ networks }}'
+        ovf: '{{ vcsa_ova_file }}'
+        wait_for_ip_address: true
+        validate_certs: false
+        inject_ovf_env: true
+        properties:
+          DeploymentOption.value: '{{ vcsa_size }}'
+          guestinfo.cis.appliance.net.addr.family: "ipv4"
+          guestinfo.cis.appliance.net.mode: "static"
+          guestinfo.cis.appliance.net.addr: '{{ vcenter_address }}'
+          guestinfo.cis.appliance.net.pnid: '{{ vcenter_hostname }}.{{ domain }}'
+          guestinfo.cis.appliance.net.prefix: '{{ net_prefix }}'
+          guestinfo.cis.appliance.net.gateway: '{{ net_gateway }}'
+          guestinfo.cis.appliance.net.dns.servers: '{{ dns_servers }}'
+          guestinfo.cis.appliance.root.password: '{{ vcenter_password }}'
+          guestinfo.cis.appliance.ssh.enabled: true
+          guestinfo.cis.appliance.ntp.servers: '{{ ntp_servers }}'
+          guestinfo.cis.ceip_enabled: false
+          guestinfo.cis.deployment.autoconfig: true
+          guestinfo.cis.vmdir.password: '{{ vcenter_password }}'
+          domain: '{{ domain }}'
+          searchpath: '{{ searchpath }}'
+        delegate_to: localhost
+
+    - name: Wait for vCenter
+      vmware_about_facts:
+        hostname: '{{ vcenter_address }}'
+        username: "administrator@vsphere.local"
+        password: '{{ vcenter_password }}'
+        validate_certs: no
+      delegate_to: localhost
+      retries: 20
+      delay: 60
+      register: result
+      until: result is succeeded
+
