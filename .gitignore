@@ -272,3 +272,19 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+# Ignore large-files in role files directory
+**/files/ovf/*./files/ovf/VMware-vCenter-Server-Appliance-6.7.0.50000-18485166_OVF10-disk1.vmdk
+**/files/ovf/VMware-vCenter-Server-Appliance-6.7.0.50000-18485166_OVF10-disk2.vmdk
+**/files/VMware-vCenter-Server-Appliance-6.7.0.50000-18485166_OVF10.ova
+**/.git/objects/f5/f8e0fc067bbe0802cc168a7b8e8f0b54ab3ef4
+**/.git/objects/pack/pack-b5875ff3f9fb3df6f6b1e142ceba648fdbf2efde.pack
+**/files/ovf/VMware-vCenter-Server-Appliance-6.7.0.50000-18485166_OVF10-disk1.vmdk
+**/files/ovf/VMware-vCenter-Server-Appliance-6.7.0.50000-18485166_OVF10-disk2.vmdk
+**/files/VMware-vCenter-Server-Appliance-6.7.0.50000-18485166_OVF10.ova
+**/files/ovf/VMware-vCenter-Server-Appliance-6.7.0.50000-18485166_OVF10-disk1.vmdk
+**/files/ovf/VMware-vCenter-Server-Appliance-6.7.0.50000-18485166_OVF10-disk2.vmdk
+**/files/VMware-vCenter-Server-Appliance-6.7.0.50000-18485166_OVF10.ova
+**/files/ovf/VMware-vCenter-Server-Appliance-6.7.0.50000-18485166_OVF10-disk1.vmdk
+**/files/ovf/VMware-vCenter-Server-Appliance-6.7.0.50000-18485166_OVF10-disk2.vmdk
+**/files/VMware-vCenter-Server-Appliance-6.7.0.50000-18485166_OVF10.ova
+**/files/ovf/**
