@@ -1,0 +1,10 @@
+---
+- name: role - vCenterServer | 00-pre-tasks.yml
+  block:
+    - name: Gather Facts
+      setup:
+        gather_subset:
+          - 'os_family'
+      register: _os
+
+    - name: 
