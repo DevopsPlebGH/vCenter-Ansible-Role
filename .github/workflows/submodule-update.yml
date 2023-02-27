@@ -2,7 +2,7 @@
 name: Dispatch to repo
 on: [push, workflow_dispatch]
 env:
-    repo: "DevopsPlebGH/devopspleb.vmware"
+    submodule: "roles/vCenterServer"
 jobs:
   dispatch:
     runs-on: ubuntu-latest
@@ -16,4 +16,4 @@ jobs:
           token: ${{ secrets.PAT }}
           repository: ${{ matrix.repo }}
           event-type: update
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "module": "owner/submodule", "branch": "main"}'
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "module": "${{ env.submodule }}", "branch": "main"}'
