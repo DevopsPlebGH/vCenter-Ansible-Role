@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PARENT_REPOSITORY: 'DevopsPlebGH/devopspleb.vmware'
-      CHECKOUT_BRANCH: 'main'
+      CHECKOUT_BRANCH: 'dev'
       PR_AGAINST_BRANCH: 'main'
       OWNER: 'DevopsPlebGH'
 
